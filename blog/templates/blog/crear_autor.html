@@ -1,0 +1,18 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}Registrar Autor{% endblock %}
+
+{% block contenido %}
+    <h2>Registrar Nuevo Autor</h2>
+    
+    <form method="POST">
+        {% csrf_token %} 
+        
+        <table>
+            <!-- ¡CORRECCIÓN! Debe ser 'formulario', no 'miFormulario' -->
+            {{ formulario.as_table }} 
+        </table>
+        
+        <button type="submit" class="btn">Guardar Autor</button>
+    </form>
+{% endblock %}

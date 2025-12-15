@@ -1,0 +1,17 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}Crear Post{% endblock %}
+
+{% block contenido %}
+    <h2>Crear Nuevo Post</h2>
+    
+    <form method="POST">
+        {% csrf_token %} 
+        
+        <table>
+            {{ formulario.as_table }}
+        </table>
+        
+        <button type="submit" class="btn">Publicar Post</button>
+    </form>
+{% endblock %}
