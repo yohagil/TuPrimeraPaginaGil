@@ -1,17 +1,22 @@
 {% extends 'blog/base.html' %}
 
-{% block title %}Registrar Categoría{% endblock %}
+{% block title %}Nueva Categoría{% endblock %}
 
 {% block contenido %}
-    <h2>Registrar Nueva Categoría</h2>
-    
-    <form method="POST">
-        {% csrf_token %} 
+<div style="max-width: 600px; margin: 0 auto;">
+<h2 style="color: #2c3e50;">Crear Nueva Categoría</h2>
+<p style="color: #7f8c8d;">Define una nueva categoría para organizar los artículos.</p>
+  <form method="POST" style="background: #ffffff; padding: 25px; border-radius: 10px; border: 1px solid #e2e8f0; margin-top: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+        {% csrf_token %}
         
-        <table>
-            {{ formulario.as_table }}
-        </table>
+        <div style="margin-bottom: 20px;">
+            {{ formulario.as_p }}
+        </div>
         
-        <button type="submit" class="btn">Guardar Categoría</button>
+        <button type="submit" class="btn" style="background-color: #8e44ad; width: 100%; color: white; padding: 12px; border: none; border-radius: 5px; font-weight: bold; cursor: pointer;">
+            ➕ Crear Categoría
+        </button>
     </form>
+</div>
+
 {% endblock %}

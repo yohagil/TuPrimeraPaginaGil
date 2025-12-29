@@ -3,16 +3,20 @@
 {% block title %}Registrar Autor{% endblock %}
 
 {% block contenido %}
-    <h2>Registrar Nuevo Autor</h2>
-    
-    <form method="POST">
-        {% csrf_token %} 
+    <div style="max-width: 600px; margin: 0 auto;">
+        <h2 style="color: #2c3e50;">Registrar Nuevo Autor</h2>
         
-        <table>
-            <!-- ¡CORRECCIÓN! Debe ser 'formulario', no 'miFormulario' -->
-            {{ formulario.as_table }} 
-        </table>
-        
-        <button type="submit" class="btn">Guardar Autor</button>
-    </form>
+        <form method="POST" style="background: white; padding: 20px; border-radius: 8px; border: 1px solid #ddd;">
+            {% csrf_token %}
+            
+            <table style="width: 100%;">
+                {{ formulario.as_table }}
+            </table>
+            
+            <button type="submit" class="btn" style="background-color: #27ae60; color: white; padding: 10px; border: none; width: 100%; margin-top: 20px; cursor: pointer;">
+                Guardar Autor
+            </button>
+        </form>
+    </div>
 {% endblock %}
+```

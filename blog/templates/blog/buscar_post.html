@@ -1,15 +1,22 @@
+
 {% extends 'blog/base.html' %}
 
 {% block title %}Buscar Post{% endblock %}
 
 {% block contenido %}
-    <h2>Buscar Artículos por Título</h2>
+
+    <h2>Buscar Artículos</h2>
+    <p>Ingresa una palabra para buscar en los títulos.</p>
     
-    <form method="POST" style="margin-top: 20px;">
+    <form method="POST">
         {% csrf_token %}
         
+        <!-- Dibuja el campo de búsqueda -->
         {{ formulario.as_p }}
         
-        <button type="submit" class="btn" style="background-color: #007bff;">Buscar</button>
+        <button type="submit" class="btn" style="background-color: #3498db; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer;">
+            🔍 Buscar
+        </button>
     </form>
+
 {% endblock %}
