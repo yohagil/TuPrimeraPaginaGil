@@ -2,28 +2,59 @@
 
 {% block title %}Inicio - Blog de Gil{% endblock %}
 
-{% block contenido %} <h2 style="color: #2c3e50; border-bottom: 2px solid #eee; padding-bottom: 10px;">Publicaciones</h2>
+{% block contenido %}
+    <h2 style="color: #2c3e50; border-bottom: 2px solid #eee; padding-bottom: 10px;">Publicaciones</h2>
 
-{% if posts %}
-    <p style="color: #7f8c8d;">Se han encontrado {{ posts|length }} resultado(s):</p>
-    
-    <div class="contenedor-posts">
-        {% for p in posts %}
-            <div style="background: white; border: 1px solid #ddd; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
-                <h3 style="margin-top: 0; color: #2980b9;">{{ p.titulo }}</h3>
-                <p style="color: #333; line-height: 1.6;">{{ p.contenido }}</p>
-                <div style="font-size: 0.8em; color: #95a5a6; margin-top: 15px; display: flex; justify-content: space-between;">
-                    <span>📅 Publicado el: {{ p.fecha_publicacion }}</span>
+    {% if posts %}
+        <p style="color: #7f8c8d;">Se han encontrado {{ posts|length }} resultado(s):</p>
+        
+        <div class="contenedor-posts">
+            {% for p in posts %}
+                <div style="background: white; border: 1px solid #ddd; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); display: flex; gap: 20px;">
+                    
+                    <!-- 1. MOSTRAR IMAGEN (Si existe) -->
+                    {% if p.imagen %}
+                        <div style="flex-shrink: 0;">
+                            <img src="{{ p.imagen.url }}" alt="Imagen del post" style="width: 150px; height: 150px; object-fit: cover; border-radius: 5px;">
+                        </div>
+                    {% endif %}
+
+                    <!-- Contenido del Post -->
+                    <div style="flex-grow: 1;">
+                        <h3 style="margin-top: 0; color: #2980b9;">{{ p.titulo }}</h3>
+                        
+                        <div style="color: #333; line-height: 1.6;">
+                            <!-- Muestra solo las primeras 30 palabras y renderiza el HTML -->
+                            {{ p.contenido|safe|truncatewords:30 }} 
+                            
+                            <!-- Enlace al detalle -->
+                            <a href="{% url 'detalle_post' p.id %}" style="color: #007bff; text-decoration: none; font-weight: bold; margin-left: 5px;">(Leer más...)</a>
+                        </div>
+                        
+                        <div style="font-size: 0.8em; color: #95a5a6; margin-top: 15px; display: flex; justify-content: space-between; align-items: center;">
+                            <span>📅 Publicado el: {{ p.fecha_publicacion }}</span>
+                            
+                            <!-- BOTONES DE EDICIÓN Y BORRADO (Solo visibles si el usuario está logueado) -->
+                            {% if user.is_authenticated %}
+                                <div>
+                                    <a href="{% url 'editar_post' p.id %}" style="color: #f39c12; text-decoration: none; margin-right: 15px; font-weight: bold;">
+                                        ✏️ Editar
+                                    </a>
+                                    <a href="{% url 'borrar_post' p.id %}" style="color: #e74c3c; text-decoration: none; font-weight: bold;">
+                                        🗑️ Borrar
+                                    </a>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
                 </div>
-            </div>
-        {% endfor %}
-    </div>
-{% else %}
-    <div style="text-align: center; padding: 40px; background: #fdfdfe; border: 1px dashed #cbd5e0; border-radius: 8px;">
-        <p style="color: #718096; font-size: 1.1em;">No hay publicaciones para mostrar.</p>
-        <p style="color: #a0aec0;">Realiza una búsqueda o utiliza el botón de abajo para crear contenido.</p>
-        <a href="{% url 'crear_post' %}" class="btn" style="background-color: #38a169; margin-top: 15px;">Crear mi primer Post</a>
-    </div>
-{% endif %}
+            {% endfor %}
+        </div>
+    {% else %}
+        <div style="text-align: center; padding: 40px; background: #fdfdfe; border: 1px dashed #cbd5e0; border-radius: 8px;">
+            <p style="color: #718096; font-size: 1.1em;">No hay publicaciones para mostrar.</p>
+            <a href="{% url 'crear_post' %}" class="btn" style="background-color: #38a169; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; margin-top: 15px; display: inline-block;">Crear mi primer Post</a>
+        </div>
+    {% endif %}
 
 {% endblock %}

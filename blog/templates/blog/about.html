@@ -1,0 +1,40 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}Acerca de Mí{% endblock %}
+
+{% block contenido %}
+<div style="max-width: 800px; margin: 40px auto; background: white; padding: 40px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: center;">
+    
+    <h1 style="color: #2c3e50; margin-bottom: 30px;">Acerca de Mí</h1>
+    
+    <!-- 1. IMAGEN DE PERFIL (Placeholder robusto) -->
+    <div style="width: 150px; height: 150px; border-radius: 50%; background-color: #ddd; margin: 0 auto 20px; overflow: hidden; border: 5px solid #2c3e50;">
+        <img src="https://ui-avatars.com/api/?name=Gil&background=0D8ABC&color=fff&size=200" alt="Foto de Perfil" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+
+    <!-- 2. DESCRIPCIÓN (Texto seguro) -->
+    <div style="margin-top: 20px; color: #444;">
+        <h3 style="color: #333; margin-bottom: 15px;">¡Hola! Soy Yohanny Gil 👋</h3>
+        
+        <p style="font-size: 1.1em; line-height: 1.6; margin-bottom: 15px;">
+            Este proyecto fue desarrollado utilizando <strong>Django</strong> y <strong>Python</strong> como parte del curso de CoderHouse.
+        </p>
+        
+        <p style="font-size: 1.1em; line-height: 1.6;">
+            Aquí podrás encontrar artículos sobre tecnología, programación, Libros, Art. de interés y mis experiencias personales en el mundo del desarrollo web.
+        </p>
+        
+        <p style="font-style: italic; color: #777; margin-top: 20px;">
+            "La programación es el arte de crear soluciones."
+        </p>
+    </div>
+
+    <!-- 3. BOTÓN VOLVER -->
+    <div style="margin-top: 40px;">
+        <a href="{% url 'index' %}" class="btn" style="background-color: #3498db; color: white; padding: 12px 25px; text-decoration: none; border-radius: 5px; font-weight: bold;">
+            🏠 Volver al Inicio
+        </a>
+    </div>
+
+</div>
+{% endblock %}

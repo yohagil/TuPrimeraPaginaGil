@@ -1,0 +1,24 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}Eliminar Publicación{% endblock %}
+
+{% block contenido %}
+<div style="max-width: 600px; margin: 50px auto; text-align: center; background: white; padding: 40px; border-radius: 10px; border: 1px solid #e74c3c;">
+    
+    <h2 style="color: #c0392b;">⚠️ ¿Estás seguro?</h2>
+    
+    <p style="font-size: 1.2em;">Vas a eliminar la publicación: <strong>"{{ object.titulo }}"</strong></p>
+    <p style="color: #777;">Esta acción no se puede deshacer.</p>
+    
+    <form method="POST">
+        {% csrf_token %}
+        
+        <button type="submit" class="btn" style="background-color: #c0392b; color: white; padding: 10px 30px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 1.1em;">
+            Sí, eliminar
+        </button>
+        
+        <br><br>
+        <a href="{% url 'index' %}" style="color: #3498db; text-decoration: none;">No, cancelar</a>
+    </form>
+</div>
+{% endblock %}

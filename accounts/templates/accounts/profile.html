@@ -1,0 +1,35 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}Mi Perfil{% endblock %}
+
+{% block contenido %}
+    <div style="max-width: 600px; margin: 0 auto;">
+        <h2 style="color: #2c3e50;">Perfil de Usuario</h2>
+        
+        <div style="background: white; padding: 30px; border-radius: 10px; border: 1px solid #ddd; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-align: center;">
+            
+            <!-- LÓGICA DE AVATAR (ESTE ES EL AJUSTE NUEVO) -->
+            {% if url %}
+                <img src="{{ url }}" alt="Avatar" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 20px; border: 4px solid #007bff;">
+            {% else %}
+                <!-- Imagen por defecto (un círculo gris) si no ha subido foto -->
+                <div style="width: 150px; height: 150px; border-radius: 50%; background-color: #e9ecef; color: #6c757d; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 60px; border: 4px solid #ddd;">
+                    👤
+                </div>
+            {% endif %}
+            
+            <h3 style="color: #007bff;">Hola, {{ user.username }}!</h3>
+            
+            <div style="margin: 20px 0; text-align: left;">
+                <p><strong>📧 Email:</strong> {{ user.email }}</p>
+                <p><strong>👤 Nombre Completo:</strong> {{ user.first_name }} {{ user.last_name }}</p>
+            </div>
+            
+            <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
+            
+            <a href="{% url 'editar_perfil' %}" class="btn" style="background-color: #ffc107; color: #333; text-decoration: none; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
+                ✏️ Editar mis datos
+            </a>
+        </div>
+    </div>
+{% endblock %}

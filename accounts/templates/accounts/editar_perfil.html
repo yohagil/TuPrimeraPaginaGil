@@ -1,0 +1,24 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}Editar Perfil{% endblock %}
+
+{% block contenido %}
+    <div style="max-width: 500px; margin: 40px auto; padding: 30px; border: 1px solid #e1e4e8; border-radius: 8px; background-color: #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+        <h2 style="text-align: center; color: #333; margin-bottom: 20px;">Editar mis datos</h2>
+        
+        <!-- enctype es necesario para subir imágenes (avatar) en el futuro -->
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            {{ form.as_p }}
+            
+            <button type="submit" class="btn" style="width: 100%; margin-top: 20px; background-color: #17a2b8; color: white; padding: 10px; border: none; border-radius: 5px; font-weight: bold; cursor: pointer;">
+                💾 Guardar Cambios
+            </button>
+        </form>
+        
+        <div style="text-align: center; margin-top: 15px;">
+            <a href="{% url 'profile' %}" style="color: #6c757d; text-decoration: none;">Cancelar y volver</a>
+        </div>
+    </div>
+{% endblock %}

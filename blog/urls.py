@@ -13,4 +13,9 @@ urlpatterns = [
     
     # Ruta para el formulario de búsqueda
     path('buscar-post/', views.buscar_post, name='buscar_post'),
+    path('post/<int:pk>/', views.detalle_post, name='detalle_post'),
+    path('about/', views.about, name='about'),
+      path('post/editar/<int:pk>/', views.PostUpdateView.as_view(), name='editar_post'),
+    path('post/borrar/<int:pk>/', views.PostDeleteView.as_view(), name='borrar_post'),
+
 ]

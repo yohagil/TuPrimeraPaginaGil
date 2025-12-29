@@ -3,21 +3,24 @@
 {% block title %}Publicar Post{% endblock %}
 
 {% block contenido %}
-<div style="max-width: 800px; margin: 0 auto;">
-<h2 style="color: #2c3e50;">Escribir una Publicación</h2>
-<p style="color: #7f8c8d;">Comparte tus ideas con el mundo.</p>
-
- <form method="POST" style="background: #ffffff; padding: 30px; border-radius: 10px; border: 1px solid #e2e8f0; margin-top: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-        {% csrf_token %}
+    <div style="max-width: 800px; margin: 0 auto;">
+        <h2 style="color: #2c3e50;">Escribir una Publicación</h2>
+        <p style="color: #7f8c8d;">Comparte tus ideas con el mundo.</p>
         
-        <div style="margin-bottom: 15px;">
-            {{ formulario.as_p }}
-        </div>
-        
-        <button type="submit" class="btn" style="background-color: #e67e22; width: 100%; color: white; padding: 15px; border: none; border-radius: 5px; font-weight: bold; font-size: 1.1em; cursor: pointer;">
-            🚀 Publicar Artículo
-        </button>
-    </form>
-</div>
-
+        <!-- IMPORTANTE: 'enctype' permite subir archivos/imágenes -->
+        <form method="POST" enctype="multipart/form-data" style="background: #ffffff; padding: 30px; border-radius: 10px; border: 1px solid #e2e8f0; margin-top: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+            {% csrf_token %}
+            
+            <!-- Carga los scripts necesarios para el CKEditor (texto rico) -->
+            {{ formulario.media }}
+            
+            <div style="margin-bottom: 15px;">
+                {{ formulario.as_p }}
+            </div>
+            
+            <button type="submit" class="btn" style="background-color: #e67e22; width: 100%; color: white; padding: 15px; border: none; border-radius: 5px; font-weight: bold; font-size: 1.1em; cursor: pointer;">
+                🚀 Publicar Artículo
+            </button>
+        </form>
+    </div>
 {% endblock %}
