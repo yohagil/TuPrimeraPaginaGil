@@ -28,3 +28,7 @@ Para probar la web, usa los siguientes comandos en la terminal de la carpeta ra�
 * **Crear Categoría:** Ingresar datos del segundo Modelo.
 * **Crear Post:** Ingresar datos del tercer Modelo.
 * **Buscar Post:** Permite buscar Posts por título.
+
+## 🎥 Video de Demostración
+Aquí puedes ver la funcionalidad completa de la página:
+[Haz clic aquí para ver el video](https://drive.google.com/drive/folders/1xeZlLIpQEku3T65CAYxuQmglUR1vVt4M?usp=drive_link)
